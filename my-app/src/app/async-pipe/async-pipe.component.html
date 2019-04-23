@@ -1,0 +1,36 @@
+<p>
+  Here we will use AsyncPipe with Observable using NgFor as follows. 
+</p>
+<h3>AsyncPipe with Observable using NgFor</h3>
+<ul>
+  <li *ngFor="let book of observableBooks | async" >
+    Id: {{book.id}}, Name: {{book.name}}
+  </li>
+</ul> 
+<br><br>
+<h3>AsyncPipe with Promise using NgFor</h3>
+<ul>
+  <li *ngFor="let book of promiseBooks | async" >
+    Id: {{book.id}}, Name: {{book.name}}
+  </li>
+</ul> 
+<br><br>
+<h3>AsyncPipe with NgIf</h3>
+
+<div *ngIf="promiseBook | async as book; else loading">
+   Id: {{book.id}}, Name: {{book.name}}
+</div>   
+<ng-template #loading>Loading Data...</ng-template>
+
+<h3>AsyncPipe with NgSwitch</h3>
+
+<div [ngSwitch]="(promiseBook | async)?.id">
+  <div *ngSwitchCase="100">Find Actual Data</div>
+  <div *ngSwitchDefault>Showing Default Data</div>
+</div> 
+
+<h3>AsyncPipe with Date</h3>
+
+<div>{{ observableTime | async }} </div> <br/>
+
+<div>{{ observableTime | async | date : 'mediumTime' }} </div> 
