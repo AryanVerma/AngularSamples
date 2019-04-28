@@ -1,13 +1,17 @@
-<p>
-  Here we will use AsyncPipe with Observable using NgFor as follows. 
-</p>
+<div class="box">
+
+<table>
+  <tr><th> Here we will use AsyncPipe with Observable using NgFor as follows. </th></tr>
+</table>
+<div class="box">
 <h3>AsyncPipe with Observable using NgFor</h3>
 <ul>
-  <li *ngFor="let book of observableBooks | async" >
+  <li *ngFor="let book of observableBooks | async " >
     Id: {{book.id}}, Name: {{book.name}}
   </li>
 </ul> 
-<br><br>
+</div>
+
 <h3>AsyncPipe with Promise using NgFor</h3>
 <ul>
   <li *ngFor="let book of promiseBooks | async" >
@@ -34,3 +38,5 @@
 <div>{{ observableTime | async }} </div> <br/>
 
 <div>{{ observableTime | async | date : 'mediumTime' }} </div> 
+
+</div>

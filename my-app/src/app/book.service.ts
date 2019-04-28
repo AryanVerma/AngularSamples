@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Observable , Subscriber, from, throwError } from 'rxjs';
 import { map, filter, catchError, mergeMap, retry } from 'rxjs/operators';
   
+import { Book } from './book';
+//import {Book} from './data/book.json';
 
-import {Book } from './book';
 // Find the description of the method and classes used in our service. 
 // @Injectable(): This decorator is used to make a service available for injection by injector. 
 // Http: Angular service to handle server communication. 
@@ -23,35 +24,43 @@ import {Book } from './book';
 })
 export class BookService {
 private url:string;
+ 
   constructor(private http:HttpClient,@Inject('BASE_URL') baseUrl: string) {
-    this.url  = baseUrl  + '/data/book.json';
+    this.url  = baseUrl  ;
   }
 
    
    getBooksWithObservable(): Observable<any> {
     return this.http.get(this.url)
     .pipe(
-      map((e:Response)=> e.json()),
-      catchError((e:Response)=> throwError(e))
+      map(res=>res),
+      catchError((res:Response)=> throwError(res))
     );
    }
 
 
    //Returns Promise<Book[]>
-   getBooksWithPromise(): Promise<Book[]> { return this.http.get(this.url).toPromise().then((res: Response) => res.json()); }
+   getBooksWithPromise(): Promise<Book[]> { return this.http.get(this.url).toPromise() .then(this.extractData)
+    .catch(err => {
+        return Promise.reject(err.error || 'Server error');
+    }); }
+    extractData(res) {     
+      return res ;      
+    }
    //Returns Observable<string>
    getCurrentTime(): Observable<string> { return new Observable<string>((observer: Subscriber<string>) => { 
      setInterval(() => observer.next(new Date().toString()), 1000);
    });
   }
  //Returns Promise<Book> 
- getBookSlowly(): Promise<Book> { return new Promise(resolve => { 
+ getBookSlowly(): Promise<Book> { return 
+  new Promise(resolve => { 
       let book = new Book(); 
        book.id= 100;
        book.name= 'jQuery Tutorials';
        // Delay by 3 second
-       setTimeout(() => resolve(book), 3000);
-      });
+       setTimeout(() => resolve(book), 3000);      
+    });
 }	
 
 

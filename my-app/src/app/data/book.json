@@ -1,6 +1,12 @@
-[
-    {"id": 1, "name": "Core Java"},
+{
+    "Book"  : [ 
+            {"id": 1, "name": "Core Java"},
     {"id": 2, "name": "Angular 2"},
     {"id": 3, "name": "Hibernate"},
     {"id": 4, "name": "Spring"}
-]
+    ]
+}
+
+
+//to run this file install json-server and run following command.
+//json-server --watch book.json

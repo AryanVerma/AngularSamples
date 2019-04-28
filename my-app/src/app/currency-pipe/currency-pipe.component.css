@@ -1,6 +1,6 @@
 .box {
     display: flex;
-    align-items: stretch;
+    align-items : flex-start;
     justify-content: center;
     flex-direction: column
   }
@@ -9,5 +9,3 @@
     width: 25%;
     height: 25%;
   }
-
-  

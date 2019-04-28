@@ -1,0 +1,46 @@
+
+<h2>
+  currency-pipe works!
+</h2>
+<div>
+  <!--output '$0.26'-->
+  <p>A: {{ a | currency}}</p>
+
+  <!--output 'CA$0.26'-->
+  <p>A: {{ a | currency:'CAD'}}</p>
+
+  <p>A: {{ a | currency:'INR'}}</p>
+
+  <!--output 'CAD0.26'-->
+  <p>A: {{ a | currency:'CAD':'code'}}</p>
+
+  <p>B: {{ b | currency:'CAD':'symbol':'4.2-2'}}</p>
+
+  <p>B: {{ b | currency:'CAD':'symbol-narrow':'4.2-2'}}</p>
+  <div>
+    <p> {{b | currency:'INR':false}} </p>
+    <p> {{b | currency:'INR':false:'1.2-4'}} </p>
+    <p> {{b | currency}} </p>
+    <p> {{b | currency:'USD':true:'2.2-4'}} </p>
+  </div>
+ 
+
+ <!--output 'CLP1' because CLP has no cents-->
+  <p>B: {{ b | currency:'CLP'}}</p>
+
+
+  <h3>Decimal Pipe</h3>
+  <div>
+     <p> {{a | number}} </p>
+<p> {{a | number:'3.2-5'}} </p>
+<p> {{a | number:'3.2-5'}} </p>
+<p> {{a * a | number:'1.3-6'}} </p>
+  </div>
+</div>
+<h3>Percent Pipe</h3>
+	    <div>
+	      <p> {{a | percent}} </p>
+	      <p> {{a | percent:'2.2-5'}} </p>
+	      <p> {{a | percent:'1.2-5'}} </p>
+	      <p> {{b * b | percent:'1.2-3'}} </p>
+	    </div>

@@ -5,10 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { BookService } from './book.service';
+import { CurrencyPipeComponent } from './currency-pipe/currency-pipe.component';
+import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
+import {   MultiplierPipe  } from './custom-pipe/MultiplierPipe';
 @NgModule({
   declarations: [
     AppComponent,
-    AsyncPipeComponent
+    AsyncPipeComponent,
+    CurrencyPipeComponent,
+    CustomPipeComponent,
+    MultiplierPipe,
   ],
   imports: [
     BrowserModule,
@@ -21,5 +27,6 @@ import { BookService } from './book.service';
 export class AppModule { }
 
 export function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href;
+  return 'http://localhost:3000/Book' ;
+  //document.getElementsByTagName('base')[0].href;
 }
